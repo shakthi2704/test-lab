@@ -2,7 +2,7 @@
 
 Below is a cleaned, corrected, and properly ordered Docker installation and setup procedure for Ubuntu/Debian-based systems, with errors fixed, inconsistencies removed, and best practices applied. I also explain what was wrong and why it is fixed, but concisely.
 
-## 1.Reconfigure Timezone (Optional but Recommended -proxmox)
+### 1.Reconfigure Timezone (Optional but Recommended -proxmox)
 
 ```
 
@@ -10,20 +10,20 @@ sudo dpkg-reconfigure tzdata
 
 ```
 
-## 2. System Update & Base Packages
+#### 2. System Update & Base Packages
 
-## 3. (Optional) Create a Dedicated Non-Root User for Docker
+#### 3. (Optional) Create a Dedicated Non-Root User for Docker
 
-## 4. Add Docker Official Repository (Correct Method)
+### 4. Add Docker Official Repository (Correct Method)
 
-## 5. Install Docker Engine & Tools
+### 5. Install Docker Engine & Tools
 
-## 6. Create Docker Group & Add User
+### 6. Create Docker Group & Add User
 
-## 7. Enable and Start Docker
+### 7. Enable and Start Docker
 
-## 8. Docker Directory Layout (Before daemon.json)
+### 8. Docker Directory Layout (Before daemon.json)
 
-## 9. Docker Daemon Configuration
+### 9. Docker Daemon Configuration
 
-## 10. Verify Docker Installation (Sanity Check)
+### 10. Verify Docker Installation (Sanity Check)
