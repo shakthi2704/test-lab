@@ -56,8 +56,6 @@ capacity planning, and architectural decisions.
 
 ---
 
----
-
 ## Device 2 – proxima Compute & Runtime Host
 
 ### System Information
@@ -86,8 +84,6 @@ capacity planning, and architectural decisions.
 | ------ | ---- | -------- | ------------- |
 | Disk 1 | NVMe | 120 GB   | OS / Backup   |
 | Disk 2 | HDD  | 1 TB     | Data / LXC    |
-
----
 
 ---
 
@@ -121,8 +117,6 @@ capacity planning, and architectural decisions.
 | Disk 2 | HDD  | 1 TB     | Data          |
 | Disk 3 | HDD  | 1 TB     | Data          |
 | Disk 4 | HDD  | 1 TB     | Data          |
-
----
 
 ---
 
