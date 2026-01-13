@@ -25,134 +25,136 @@ capacity planning, and architectural decisions.
 
 ---
 
-## Device 1 – lyra - Workstation
+## Device 1 – lyra Workstation
 
 ### System Information
 
 | Category            | Specification                                |
 | ------------------- | -------------------------------------------- |
-| Device Name         | `lyra`                                       |
+| Device Name         | lyra                                         |
 | System Type         | 64-bit operating system, x64-based processor |
-| Processor           | `Intel® Core™ i5-10400`                      |
-| CPU Cores / Threads | `6/12`                                       |
+| Processor           | Intel Core i5-10400                          |
+| CPU Cores / Threads | 6 / 12                                       |
 | Architecture        | x64                                          |
 | Role                | Development, control plane, tooling          |
 
 ### Memory Constraints
 
-| Attribute               | Value       |
-| ----------------------- | ----------- |
-| Installed RAM           | `20GB`      |
-| RAM Speed               | `2400 MT/s` |
-| Memory Upgrade Possible | `Yes`       |
-| Max Supported RAM       | `128GB`     |
+| Attribute               | Value     |
+| ----------------------- | --------- |
+| Installed RAM           | 20 GB     |
+| RAM Speed               | 2400 MT/s |
+| Memory Upgrade Possible | Yes       |
+| Max Supported RAM       | 128 GB    |
 
 ### Storage Constraints
 
-| Disk # | Type (NVMe / SSD / HDD) | Capacity | Usage / Notes |
-| ------ | ----------------------- | -------- | ------------- |
-| Disk 1 | `NVME`                  | `256GB`  | `OS`          |
-| Disk 2 | `NVME`                  | `240BG`  | `Data`        |
+| Disk # | Type | Capacity | Usage / Notes |
+| ------ | ---- | -------- | ------------- |
+| Disk 1 | NVMe | 256 GB   | OS            |
+| Disk 2 | NVMe | 240 GB   | Data          |
 
 ---
 
 ---
 
-## Device 2 – proxima - Compute & Runtime Host
+## Device 2 – proxima Compute & Runtime Host
 
 ### System Information
 
 | Category            | Specification                                |
 | ------------------- | -------------------------------------------- |
-| Device Name         | `proxima`                                    |
+| Device Name         | proxima                                      |
 | System Type         | 64-bit operating system, x64-based processor |
-| Processor           | `Intel® Core™ i5-10400`                      |
-| CPU Cores / Threads | `6/12`                                       |
+| Processor           | Intel Core i5-10400                          |
+| CPU Cores / Threads | 6 / 12                                       |
 | Architecture        | x64                                          |
-| Role                | Hypervisor (LXCs only)                       |
+| Role                | Hypervisor (LXC only)                        |
 
 ### Memory Constraints
 
-| Attribute               | Value       |
-| ----------------------- | ----------- |
-| Installed RAM           | `8GB`       |
-| RAM Speed               | `2400 MT/s` |
-| Memory Upgrade Possible | `Yes`       |
-| Max Supported RAM       | `64GB`      |
+| Attribute               | Value     |
+| ----------------------- | --------- |
+| Installed RAM           | 8 GB      |
+| RAM Speed               | 2400 MT/s |
+| Memory Upgrade Possible | Yes       |
+| Max Supported RAM       | 64 GB     |
 
 ### Storage Constraints
 
-| Disk # | Type (NVMe / SSD / HDD) | Capacity | Usage / Notes |
-| ------ | ----------------------- | -------- | ------------- |
-| Disk 1 | `NVME`                  | `120GB`  | `OS/backup`   |
-| Disk 2 | `HDD`                   | `1TB`    | `Data/LXC`    |
+| Disk # | Type | Capacity | Usage / Notes |
+| ------ | ---- | -------- | ------------- |
+| Disk 1 | NVMe | 120 GB   | OS / Backup   |
+| Disk 2 | HDD  | 1 TB     | Data / LXC    |
 
 ---
 
 ---
 
-## Device 3 – rhea - Open Media Vault
+## Device 3 – rhea Open Media Vault
 
 ### System Information
 
 | Category            | Specification                                |
 | ------------------- | -------------------------------------------- |
-| Device Name         | `rhea`                                       |
+| Device Name         | rhea                                         |
 | System Type         | 64-bit operating system, x64-based processor |
-| Processor           | `Intel® Core™ Intel i3-3220`                 |
-| CPU Cores / Threads | `2/4`                                        |
+| Processor           | Intel Core i3-3220                           |
+| CPU Cores / Threads | 2 / 4                                        |
 | Architecture        | x64                                          |
-| Role                | NAS, backups only, Media server              |
+| Role                | NAS, backups only, media server              |
 
 ### Memory Constraints
 
-| Attribute               | Value       |
-| ----------------------- | ----------- |
-| Installed RAM           | `4GB`       |
-| RAM Speed               | `1600 MT/s` |
-| Memory Upgrade Possible | `Yes`       |
-| Max Supported RAM       | `16GB`      |
+| Attribute               | Value     |
+| ----------------------- | --------- |
+| Installed RAM           | 4 GB      |
+| RAM Speed               | 1600 MT/s |
+| Memory Upgrade Possible | Yes       |
+| Max Supported RAM       | 16 GB     |
 
 ### Storage Constraints
 
-| Disk # | Type (NVMe / SSD / HDD) | Capacity | Usage / Notes |
-| ------ | ----------------------- | -------- | ------------- |
-| Disk 1 | `HDD`                   | `250GB`  | `OS`          |
-| Disk 2 | `HDD`                   | `1TB`    | `data`        |
-| Disk 3 | `HDD`                   | `1TB`    | `data`        |
-| Disk 5 | `HDD`                   | `1TB`    | `data`        |
+| Disk # | Type | Capacity | Usage / Notes |
+| ------ | ---- | -------- | ------------- |
+| Disk 1 | HDD  | 250 GB   | OS            |
+| Disk 2 | HDD  | 1 TB     | Data          |
+| Disk 3 | HDD  | 1 TB     | Data          |
+| Disk 4 | HDD  | 1 TB     | Data          |
 
 ---
 
 ---
 
-## Device 4 – nova - Operations & Access Node
+## Device 4 – nova Operations & Access Node
 
 ### System Information
 
 | Category            | Specification                                |
 | ------------------- | -------------------------------------------- |
-| Device Name         | `nova`                                       |
+| Device Name         | nova                                         |
 | System Type         | 64-bit operating system, x64-based processor |
-| Processor           | `Intel® Core™ i3-7100U`                      |
-| CPU Cores / Threads | `2/4`                                        |
+| Processor           | Intel Core i3-7100U                          |
+| CPU Cores / Threads | 2 / 4                                        |
 | Architecture        | x64                                          |
-| Role                | Operations & Access Node                     |
+| Role                | Operations & access node                     |
 
 ### Memory Constraints
 
-| Attribute               | Value       |
-| ----------------------- | ----------- |
-| Installed RAM           | `12GB`      |
-| RAM Speed               | `2133 MT/s` |
-| Memory Upgrade Possible | `Yes`       |
-| Max Supported RAM       | `16GB`      |
+| Attribute               | Value     |
+| ----------------------- | --------- |
+| Installed RAM           | 12 GB     |
+| RAM Speed               | 2133 MT/s |
+| Memory Upgrade Possible | Yes       |
+| Max Supported RAM       | 16 GB     |
 
 ### Storage Constraints
 
-| Disk # | Type (NVMe / SSD / HDD) | Capacity | Usage / Notes |
-| ------ | ----------------------- | -------- | ------------- |
-| Disk 1 | `HDD`                   | `500GB`  | `OS/Data`     |
+| Disk # | Type | Capacity | Usage / Notes |
+| ------ | ---- | -------- | ------------- |
+| Disk 1 | HDD  | 500 GB   | OS / Data     |
+
+---
 
 ## Change Management
 

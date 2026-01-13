@@ -23,6 +23,7 @@ This topology prioritizes:
 | Proxima          | Proxmox hypervisor (hosts LXCs)                      |
 | Lyra             | Main development workstation                         |
 | Rhea             | NAS / Media server (OMV)                             |
+| Nova             | Operations & Access Node                             |
 
 ---
 
@@ -134,5 +135,3 @@ No direct traffic:
 - Firewall rules per service
 
 ---
-
-## Change Log
