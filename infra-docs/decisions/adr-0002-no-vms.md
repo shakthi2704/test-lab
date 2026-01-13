@@ -18,8 +18,6 @@ Constraints and goals:
 - Simplify management and promotion workflow
 - Align with Docker-first, containerized architecture
 
----
-
 ## Decision
 
 We will **not use full virtual machines** for service hosting.
@@ -27,8 +25,6 @@ We will **not use full virtual machines** for service hosting.
 - All services run in **Docker containers inside LXC containers**
 - Proxmox VMs may exist only for exceptional or legacy cases (rare)
 - LXC containers provide sufficient isolation for our homelab goals
-
----
 
 ## Consequences
 
@@ -42,8 +38,6 @@ We will **not use full virtual machines** for service hosting.
   - Slightly less strict isolation compared to full VMs
   - Cannot run certain OS-level experiments without LXC tweaks
 
----
-
 ## Alternatives Considered
 
 1. **Full VMs for each service:**
@@ -54,8 +48,6 @@ We will **not use full virtual machines** for service hosting.
 2. **Mixed approach (VM + LXC):**
    - Pros: flexibility for legacy workloads
    - Cons: increases complexity, breaks uniform workflow
-
----
 
 ## Notes
 

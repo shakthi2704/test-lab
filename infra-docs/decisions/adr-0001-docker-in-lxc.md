@@ -1,5 +1,11 @@
 # Homelab ADR 0001 – Docker inside LXC Containers on Proxima
 
+## Status
+
+Accepted
+
+---
+
 ## Context
 
 We need to run multiple services in a predictable, isolated, and recoverable
@@ -15,15 +21,11 @@ Constraints:
 - Services must be isolated, observable, and recoverable
 - Containers must follow a predictable lifecycle
 
----
-
 We will run **Docker inside LXC containers** on Proxima.
 
 - Each LXC container represents a class (Core, Monitoring, Datbase)
 - Docker workloads are confined to LXC containers
 - Host does not run Docker directly
-
----
 
 ## Consequences
 
@@ -37,8 +39,6 @@ We will run **Docker inside LXC containers** on Proxima.
   - Slight overhead due to LXC layer
   - Requires developer awareness of nested container management
 
----
-
 ## Alternatives Considered
 
 1. **Docker directly on host:**
@@ -49,8 +49,6 @@ We will run **Docker inside LXC containers** on Proxima.
 2. **Direct LXC services without Docker:**
    - Pros: lightweight
    - Cons: harder to manage service images, inconsistent workflows
-
----
 
 ## Notes
 

@@ -21,8 +21,6 @@ Several options were considered:
 2. Use a general-purpose Linux server for storage
 3. Use a dedicated NAS operating system (OpenMediaVault)
 
----
-
 ## Decision
 
 A dedicated node **Rhea** running **OpenMediaVault (OMV)** will host all media and file storage services.
@@ -33,8 +31,6 @@ A dedicated node **Rhea** running **OpenMediaVault (OMV)** will host all media a
 - Rhea will operate independently from Proxima, Lyra, and Nova
 
 OMV provides a **lightweight, stable, and purpose-built NAS OS**, minimizing overhead and operational complexity.
-
----
 
 ## Alternatives Considered
 
@@ -56,8 +52,6 @@ OMV provides a **lightweight, stable, and purpose-built NAS OS**, minimizing ove
 - Cons: Limited flexibility outside NAS scope
 - Accepted: aligns with principle of single-purpose node
 
----
-
 ## Consequences
 
 ### Positive
@@ -72,15 +66,11 @@ OMV provides a **lightweight, stable, and purpose-built NAS OS**, minimizing ove
 - Slightly more hardware overhead (dedicated node)
 - Any expansion of development services on Rhea would require migration
 
----
-
 ## Notes
 
 - Rhea’s storage is authoritative for media and shared files
 - Backup, replication, or high-availability strategies will be documented separately in runbooks
 - Any future development workloads on Rhea require a **new ADR**
-
----
 
 ## Summary
 

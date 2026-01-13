@@ -16,8 +16,6 @@ persistent service data. Considerations:
 - Experimental containers should not impact persistent data
 - Backups and snapshots must be feasible
 
----
-
 ## Decision
 
 We will use the following storage layout on Proxima:
@@ -32,8 +30,6 @@ We will use the following storage layout on Proxima:
 4. **Snapshots and backups**
    - Core and monitoring LXC volumes are snapshot-ready and included in backup routines
 
----
-
 ## Consequences
 
 - **Pros:**
@@ -46,8 +42,6 @@ We will use the following storage layout on Proxima:
   - Requires proper mapping and discipline to avoid accidental data loss
   - Limited flexibility if disk space becomes tight
 
----
-
 ## Alternatives Considered
 
 1. **Multiple disks for LXC classes:**
@@ -58,8 +52,6 @@ We will use the following storage layout on Proxima:
 2. **Docker volumes on host:**
    - Pros: simpler container management
    - Cons: violates host minimalism and isolation principles
-
----
 
 ## Notes
 
