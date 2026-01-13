@@ -5,8 +5,25 @@ Below is a cleaned, corrected, and properly ordered Docker installation and setu
 ## 1.Reconfigure Timezone (Optional but Recommended -proxmox)
 
 ```
-text
 
 sudo dpkg-reconfigure tzdata
 
 ```
+
+## 2. System Update & Base Packages
+
+## 3. (Optional) Create a Dedicated Non-Root User for Docker
+
+## 4. Add Docker Official Repository (Correct Method)
+
+## 5. Install Docker Engine & Tools
+
+## 6. Create Docker Group & Add User
+
+## 7. Enable and Start Docker
+
+## 8. Docker Directory Layout (Before daemon.json)
+
+## 9. Docker Daemon Configuration
+
+## 10. Verify Docker Installation (Sanity Check)
