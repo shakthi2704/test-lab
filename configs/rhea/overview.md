@@ -13,6 +13,7 @@ This document defines CPU, memory, and role-based resource allocation across all
 | Category            | Specification                                |
 | ------------------- | -------------------------------------------- |
 | Device Name         | rhea                                         |
+| Device OS           | Debian GNU/Linux                             |
 | System Type         | 64-bit operating system, x64-based processor |
 | Processor           | Intel Core i3-3220                           |
 | CPU Cores / Threads | 2 / 4                                        |
@@ -42,5 +43,11 @@ This document defines CPU, memory, and role-based resource allocation across all
 | name        | Vesrion | updated    |
 | ----------- | ------- | ---------- |
 | 13 (trixie) | 13.2    | 13/01/2026 |
+
+##### OMV vesions
+
+| name        | Vesrion             | updated    |
+| ----------- | ------------------- | ---------- |
+| 13 (trixie) | 8.0.6-1 (Synchrony) | 13/01/2026 |
 
 ---

@@ -6,7 +6,7 @@ This document defines CPU, memory, and role-based resource allocation across all
 
 ---
 
-## Device 4 – nova Operations & Access Node
+## Device – nova Operations & Access Node
 
 ### System Information
 

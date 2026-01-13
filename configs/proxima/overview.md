@@ -38,14 +38,14 @@ This document defines CPU, memory, and role-based resource allocation across all
 
 ##### OS vesions
 
-| date          | docker | compose |
-| ------------- | ------ | ------- |
-| Installed RAM | 8 GB   |         |
+| name        | Vesrion | updated    |
+| ----------- | ------- | ---------- |
+| 13 (trixie) | 13.2    | 13/01/2026 |
 
-##### OS vesions
+##### Proxmox VE vesions
 
-| name          | Vesrion | updated    |
-| ------------- | ------- | ---------- |
-| "13 (trixie)" | 13.2    | 13/01/2026 |
+| name        | Vesrion             | updated    |
+| ----------- | ------------------- | ---------- |
+| 13 (trixie) | 8.0.6-1 (Synchrony) | 13/01/2026 |
 
 ---
