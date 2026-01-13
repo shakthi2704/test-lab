@@ -115,30 +115,38 @@ sudo chmod -R 755 /srv/docker
 sudo nano /etc/docker/daemon.json
 ```
 
-```
 {
-  "log-driver": "json-file",
-  "log-opts": {
-    "max-size": "50m",
-    "max-file": "5"
-  },
-  "data-root": "/srv/docker/volumes",
-  "storage-driver": "overlay2"
+"log-driver": "json-file",
+"log-opts": {
+"max-size": "50m",
+"max-file": "5"
+},
+"data-root": "/srv/docker/volumes",
+"storage-driver": "overlay2"
 }
+
 ```
 
 ```
+
 sudo systemctl start docker
+
 ```
 
 ```
+
 docker info | grep "Docker Root Dir"
+
 ```
 
 ### 10. Verify Docker Installation (Sanity Check)
 
 ```
+
 docker --version
 docker compose version
 systemctl status docker
+
+```
+
 ```
