@@ -1,4 +1,4 @@
-# # Homelab ADR-0004: Use OpenMediaVault (OMV) for Dedicated Media & Storage Node (Rhea)
+# Homelab ADR-0004: Use OpenMediaVault (OMV) for Dedicated Media & Storage Node (Rhea)
 
 ## Status
 
