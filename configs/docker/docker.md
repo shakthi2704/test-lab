@@ -5,6 +5,8 @@ Below is a cleaned, corrected, and properly ordered Docker installation and setu
 ## 1.Reconfigure Timezone (Optional but Recommended -proxmox)
 
 ```
+text
+
 sudo dpkg-reconfigure tzdata
 
 ```
