@@ -55,7 +55,6 @@ echo \
   | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
 
 sudo apt update
-
 ```
 
 ### 5. Install Docker Engine & Tools
