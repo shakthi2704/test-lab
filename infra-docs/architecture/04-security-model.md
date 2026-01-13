@@ -1,4 +1,4 @@
-# # Homelab - Security Model
+# Homelab - Security Model
 
 ## Purpose
 

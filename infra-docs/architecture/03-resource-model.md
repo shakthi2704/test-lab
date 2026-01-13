@@ -23,8 +23,6 @@ This document records **hardware, resource, and time constraints** for each
 homelab device. These constraints are used to guide workload placement,
 capacity planning, and architectural decisions.
 
----
-
 ## Device 1 – lyra Workstation
 
 ### System Information
