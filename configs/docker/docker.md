@@ -75,17 +75,14 @@ sudo apt install -y \
 ```
 sudo groupadd docker 2>/dev/null || true
 sudo usermod -aG docker `username`
-
 ```
 
 ```
 newgrp docker
-
 ```
 
 ```
 id
-
 ```
 
 ### 7. Enable and Start Docker
@@ -94,7 +91,6 @@ id
 sudo systemctl enable docker
 sudo systemctl start docker
 sudo systemctl status docker
-
 ```
 
 ```
@@ -105,15 +101,12 @@ docker ps
 
 ```
 sudo systemctl stop docker
-
 ```
 
 ```
 sudo mkdir -p /srv/docker/{appdata,volumes,networks,logs}
 sudo chown -R $USER:$USER /srv/docker
 sudo chmod -R 755 /srv/docker
-
-
 ```
 
 ### 9. Docker Daemon Configuration
@@ -132,7 +125,6 @@ sudo nano /etc/docker/daemon.json
   "data-root": "/srv/docker/volumes",
   "storage-driver": "overlay2"
 }
-
 ```
 
 ```
@@ -141,7 +133,6 @@ sudo systemctl start docker
 
 ```
 docker info | grep "Docker Root Dir"
-
 ```
 
 ### 10. Verify Docker Installation (Sanity Check)
@@ -150,5 +141,4 @@ docker info | grep "Docker Root Dir"
 docker --version
 docker compose version
 systemctl status docker
-
 ```
