@@ -11,6 +11,7 @@ Self-hosted Git service for homelab and projects.
 | Node       | Proxima             |
 | Runtime    | Docker              |
 | Host       | LXC `core-services` |
+| service    | `gitea`             |
 | IP Address | `192.168.8.21`      |
 | OS         | Ubuntu Server       |
 | Exposure   | LAN only            |
@@ -27,54 +28,43 @@ Phase 2 — Create Gitea Directories
 
 ```
 mkdir -p /srv/docker/appdata/gitea/{data,config,logs}
-chown -R 1000:1000 /srv/docker/appdata/gitea
+mkdir -p /srv/docker/stacks/gitea
+sudo chown -R 1000:1000 /srv/docker/appdata/gitea
 chmod -R 750 /srv/docker/appdata/gitea
 
-```
+sudo chown -R $USER:$USER /srv/docker/stacks/gitea
+chmod -R 755 /srv/docker/stacks/gitea
 
-```
-/srv/docker/appdata/gitea/
-├── data
-├── config
-└── logs
-
+cd /srv/docker/stacks/gitea
 ```
 
 Phase 3 — Create docker-compose.yml
 
 ```
-cd /srv/docker
-mkdir -p /stacks/gitea
-chown -R $USER:$USER /stacks/gitea
-chmod -R 755 /stacks/gitea
 
-cd /srv/docker/stacks/gitea
 nano docker-compose.yml
 ```
 
 ```
 services:
   gitea:
-    image: gitea/gitea:latest
+    image: 'gitea/gitea:latest'
     container_name: gitea
     restart: unless-stopped
-
     ports:
-      - "3000:3000"
-      - "222:22"
-
+      - '3000:3000'
+      - '222:22'
     environment:
       USER_UID: 1000
       USER_GID: 1000
-
-      GITEA_CUSTOM: /data/custom
-      GITEA_APP_INI: /data/custom/conf/app.ini
-      GITEA_LOG_ROOT_PATH: /data/log
-
+      TZ: Asia/Colombo
     volumes:
-      - /srv/docker/appdata/gitea/data:/data
-      - /srv/docker/appdata/gitea/config:/data/custom/conf
-      - /srv/docker/appdata/gitea/logs:/data/log
+      - '/srv/docker/appdata/gitea/data:/data'
+      - '/srv/docker/appdata/gitea/config:/etc/gitea'
+      - '/srv/docker/logs/gitea/logs:/var/log/gitea'
+networks:
+  proxima-net:
+    external: true
 
 ```
 
@@ -119,3 +109,8 @@ Phase 8 — Operational Checks
 docker inspect gitea | grep RestartPolicy
 
 ```
+
+| Item                   | Value                   |
+| ---------------------- | ----------------------- |
+| Administrator Username | Proxima                 |
+| Email Address          | <proxima@proxmox.local> |
