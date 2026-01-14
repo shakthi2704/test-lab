@@ -44,8 +44,8 @@ This document defines CPU, memory, and role-based resource allocation across all
 
 ##### Proxmox VE vesions
 
-| name        | Vesrion             | updated    |
-| ----------- | ------------------- | ---------- |
-| 13 (trixie) | 8.0.6-1 (Synchrony) | 13/01/2026 |
+| Vesrion  | updated    |
+| -------- | ---------- |
+| VE 9.1.4 | 13/01/2026 |
 
 ---

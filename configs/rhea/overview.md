@@ -46,8 +46,8 @@ This document defines CPU, memory, and role-based resource allocation across all
 
 ##### OMV vesions
 
-| name        | Vesrion             | updated    |
-| ----------- | ------------------- | ---------- |
-| 13 (trixie) | 8.0.6-1 (Synchrony) | 13/01/2026 |
+| Vesrion             | updated    |
+| ------------------- | ---------- |
+| 8.0.6-1 (Synchrony) | 13/01/2026 |
 
 ---
