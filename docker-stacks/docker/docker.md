@@ -115,6 +115,7 @@ sudo chmod -R 755 /srv/docker
 sudo nano /etc/docker/daemon.json
 ```
 
+```
 {
 "log-driver": "json-file",
 "log-opts": {
@@ -124,9 +125,6 @@ sudo nano /etc/docker/daemon.json
 "data-root": "/srv/docker/volumes",
 "storage-driver": "overlay2"
 }
-
-```
-
 ```
 
 sudo systemctl daemon-reload
