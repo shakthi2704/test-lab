@@ -66,11 +66,27 @@ It is a **high-level inventory**, not an installation guide.
 ## Docker Layout
 
 ```text
-/opt/docker/
-└── core-services/
-    ├── gitea/
-    │   ├── data/
-    │   ├── config/
-    │   └── logs/
-    └── docker-compose.yml
+/srv/docker/
+├── appdata/
+│   ├── gitea/
+│   │   └── data/
+│   ├── postgres/
+│   │   └── data/
+│   ├── redis/
+│   │   └── data/
+│   └── nginx/
+│       ├── conf/
+│       └── certs/
+│
+├── stacks/
+│   ├── gitea/
+│   │   └── docker-compose.yml
+│   ├── postgres/
+│   │   └── docker-compose.yml
+│   └── nginx/
+│       └── docker-compose.yml
+│
+└── backups/
+
+
 ```
