@@ -43,9 +43,10 @@ chmod -R 750 /srv/docker/appdata/gitea
 Phase 3 — Create docker-compose.yml
 
 ```
-mkdir -p /srv/docker/stacks/gitea
-chown -R $USER:$USER /srv/docker/stacks/gitea
-chmod -R 755 /srv/docker/stacks/gitea
+cd /srv/docker
+mkdir -p /stacks/gitea
+chown -R $USER:$USER /stacks/gitea
+chmod -R 755 /stacks/gitea
 
 cd /srv/docker/stacks/gitea
 nano docker-compose.yml
