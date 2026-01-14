@@ -127,13 +127,13 @@ sudo nano /etc/docker/daemon.json
 }
 ```
 
+```
 sudo systemctl daemon-reload
 sudo systemctl start docker
 
 ```
 
 ```
-
 docker info | grep "Docker Root Dir"
 
 ```
@@ -145,7 +145,5 @@ docker info | grep "Docker Root Dir"
 docker --version
 docker compose version
 systemctl status docker
-
-```
 
 ```
