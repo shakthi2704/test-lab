@@ -103,8 +103,9 @@ sudo systemctl stop docker
 ```
 
 ```
-sudo mkdir -p /srv/docker/{appdata,volumes,networks,logs}
-sudo chown -R $USER:$USER /srv/docker
+sudo mkdir -p /srv/docker/{appdata,volumes,networks,logs,stacks,backup}
+sudo chown -R $USER:$USER /srv/docker #current Linux use
+sudo chown -R 1000:1000 /srv/docker #root
 sudo chmod -R 755 /srv/docker
 ```
 
@@ -128,6 +129,7 @@ sudo nano /etc/docker/daemon.json
 
 ```
 
+sudo systemctl daemon-reload
 sudo systemctl start docker
 
 ```

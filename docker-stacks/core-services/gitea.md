@@ -27,7 +27,7 @@ Phase 2 — Create Gitea Directories
 
 ```
 mkdir -p /srv/docker/appdata/gitea/{data,config,logs}
-chown -R dockeruser:dockeruser /srv/docker/appdata/gitea
+chown -R 1000:1000 /srv/docker/appdata/gitea
 chmod -R 750 /srv/docker/appdata/gitea
 
 ```
@@ -43,13 +43,15 @@ chmod -R 750 /srv/docker/appdata/gitea
 Phase 3 — Create docker-compose.yml
 
 ```
-cd /srv/docker/appdata/gitea
+mkdir -p /srv/docker/stacks/gitea
+chown -R $USER:$USER /srv/docker/stacks/gitea
+chmod -R 755 /srv/docker/stacks/gitea
+
+cd /srv/docker/stacks/gitea
 nano docker-compose.yml
 ```
 
 ```
-version: "3.9"
-
 services:
   gitea:
     image: gitea/gitea:latest
