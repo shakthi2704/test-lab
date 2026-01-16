@@ -1,4 +1,4 @@
-# Proxima – LXC Inventory: Core Services
+# Proxima – LXC Inventory: monitoring-services
 
 This document records the **Core Services LXC** running on **Proxima**.
 It is a **high-level inventory**, not an installation guide.
@@ -7,17 +7,17 @@ It is a **high-level inventory**, not an installation guide.
 
 ## LXC Summary
 
-| Field              | Value                        |
-| ------------------ | ---------------------------- |
-| **Container Name** | core-services                |
-| **Node**           | Proxima                      |
-| **Purpose**        | Core infrastructure services |
-| **OS**             | Ubuntu Server                |
-| **OS Version**     | 24.04 LTS                    |
-| **Last OS Update** | 14 Jan 2026                  |
-| **Container Type** | Unprivileged LXC             |
-| **Nesting**        | Enabled                      |
-| **Docker**         | Yes                          |
+| Field              | Value               |
+| ------------------ | ------------------- |
+| **Container Name** | monitoring-services |
+| **Node**           | Proxima             |
+| **Purpose**        | monitoring-services |
+| **OS**             | Ubuntu Server       |
+| **OS Version**     | 24.04 LTS           |
+| **Last OS Update** | 14 Jan 2026         |
+| **Container Type** | Unprivileged LXC    |
+| **Nesting**        | Enabled             |
+| **Docker**         | Yes                 |
 
 ---
 
@@ -28,7 +28,7 @@ It is a **high-level inventory**, not an installation guide.
 | CPU Cores | 2          |
 | RAM       | 2 GB       |
 | Swap      | 1 GB       |
-| Storage   | 100 GB     |
+| Storage   | 64 GB      |
 
 ---
 
@@ -36,7 +36,7 @@ It is a **high-level inventory**, not an installation guide.
 
 | Item       | Value          |
 | ---------- | -------------- |
-| IP Address | 192.168.8.21   |
+| IP Address | 192.168.8.22   |
 | Bridge     | vmbr0          |
 | Subnet     | 192.168.8.0/24 |
 | Gateway    | 192.168.8.1    |
@@ -46,9 +46,11 @@ It is a **high-level inventory**, not an installation guide.
 
 ## Active Services
 
-| Service | Purpose     | Status  |
-| ------- | ----------- | ------- |
-| Gitea   | Git hosting | Running |
+| Service       | Purpose       | Status  |
+| ------------- | ------------- | ------- |
+| Gitea         | Git hosting   | Running |
+| Reverse Proxy | HTTP routing  | Planned |
+| CI/CD         | Gitea Actions | Planned |
 
 ---
 
@@ -68,8 +70,13 @@ It is a **high-level inventory**, not an installation guide.
 ├── appdata/
 │   ├── gitea/
 │   │   └── data/
-│   appdata/
-    |
+│   ├── postgres/
+│   │   └── data/
+│   ├── redis/
+│   │   └── data/
+│   └── nginx/
+│       ├── conf/
+│       └── certs/
 │
 ├── stacks/
 │   ├── gitea/

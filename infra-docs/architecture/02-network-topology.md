@@ -54,7 +54,7 @@ DNS: Provided by router :
 | Nova                 | `192.168.8.30` | DHCP      |
 | Core Services LXC    | `192.168.8.21` | Static IP |
 | Monitor Services LXC | `192.168.8.22` | Static IP |
-| Monitor Services LXC | `192.168.8.23` | Static IP |
+| database Servces LXC | `192.168.8.23` | Static IP |
 | sandbox Services LXC | `192.168.8.24` | Static IP |
 
 ---

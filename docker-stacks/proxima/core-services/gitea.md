@@ -24,7 +24,7 @@ Self-hosted Git service for homelab and projects.
 id dockeruser
 ```
 
-Phase 2 — Create Gitea Directories
+#### 2 — Create Gitea Directories
 
 ```
 mkdir -p /srv/docker/appdata/gitea/{data,config,logs}
@@ -38,7 +38,7 @@ chmod -R 755 /srv/docker/stacks/gitea
 cd /srv/docker/stacks/gitea
 ```
 
-Phase 3 — Create docker-compose.yml
+#### 3 — Create docker-compose.yml
 
 ```
 
@@ -68,7 +68,7 @@ networks:
 
 ```
 
-Phase 4 — Start Gitea
+#### Phase 4 — Start Gitea
 
 ```
 docker compose up -d
@@ -80,7 +80,7 @@ docker logs gitea --tail 50
 
 ```
 
-Phase 5 — Web Installation (One-Time)
+#### Phase 5 — Web Installation (One-Time)
 
 ```
 http://<LXC-IP>:3000
@@ -96,14 +96,14 @@ ls /srv/docker/appdata/gitea/data
 
 ```
 
-Phase 7 — Validate Git Operations
+#### Phase 7 — Validate Git Operations
 
 ```
 git clone ssh://git@<LXC-IP>:222/<user>/<repo>.git
 
 ```
 
-Phase 8 — Operational Checks
+#### Phase 8 — Operational Checks
 
 ```
 docker inspect gitea | grep RestartPolicy
