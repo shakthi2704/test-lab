@@ -83,11 +83,11 @@ docker logs gitea --tail 50
 #### Phase 5 — Web Installation (One-Time)
 
 ```
-http://<LXC-IP>:3000
+http://192.168.8.21:3000
 
 ```
 
-Phase 6 — Validate File Placement
+#### Phase 6 — Validate File Placement
 
 ```
 ls /srv/docker/appdata/gitea/config
@@ -99,7 +99,7 @@ ls /srv/docker/appdata/gitea/data
 #### Phase 7 — Validate Git Operations
 
 ```
-git clone ssh://git@<LXC-IP>:222/<user>/<repo>.git
+git clone ssh://192.168.8.21:222/<user>/<repo>.git
 
 ```
 

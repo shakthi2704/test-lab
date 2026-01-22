@@ -184,3 +184,427 @@ services:
 networks:
   core_net:
     external: true
+
+
+
+services:
+  dozzle:
+    image: amir20/dozzle:latest
+    container_name: dozzle
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+    ports:
+      - "8080:8080"
+    restart: unless-stopped
+    networks:
+      - core_net
+networks:
+  core_net:
+    external: true
+
+
+
+
+
+
+auth_enabled: false
+server:
+  http_listen_port: 3100
+common:
+  instance_addr: 127.0.0.1
+  path_prefix: /tmp/loki
+  storage_config:
+    boltdb_shipper:
+      active_index_cache_size: 0
+      fs_group: false
+      shared_store: false
+      resync_interval: 5s
+      retention_period: 336h
+  replication_factor: 1
+  ring:
+    instance_id: loki-1
+    kvstore:
+      store: inmemory
+schema_config:
+  configs:
+    - from: 2020-10-24
+      store: boltdb-shipper
+      object_store: filesystem
+      schema: v11
+      index:
+        prefix: index
+        period: 24h
+ruler:
+  storage:
+    type: local
+  rule_path: /tmp/loki/rules
+  alertmanager_url: http://localhost:9093
+  ring:
+    kvstore:
+      store: inmemory
+  enable_api: true
+
+
+services:
+  loki:
+    image: grafana/loki:latest
+    container_name: loki
+    ports:
+      - "3100:3100" 
+    command: -config.file=/etc/loki/config.yml
+    volumes:
+
+      - ./loki-config.yml:/etc/loki/config.yml
+    networks:
+
+      - core_net
+
+  grafana:
+    image: grafana/grafana:latest
+    container_name: grafana
+    ports:
+      - "3000:3000" 
+    environment:
+      GF_DASHBOARDS_DEFAULT_HOME: '{"type":"loki","uid":"loki-data-source"}'
+      GF_AUTH_ANONYMOUS_ENABLED: "true" 
+    volumes:
+
+      - /srv/docker/appdata/grafana/data:/var/lib/grafana
+    networks:
+      - core_net
+
+networks:
+  core_net:
+    external: true
+
+
+
+updated---------------------------------------------
+
+
+auth_enabled: false
+server:
+  http_listen_port: 3100
+common:
+  instance_addr: 127.0.0.1
+  path_prefix: /loki
+  replication_factor: 1
+  migration:
+    shared_store: false
+  ring:
+    instance_id: loki-1
+    kvstore:
+      store: inmemory
+
+storage_config:
+  boltdb_shipper:
+    active_index_cache_size: 0
+    fs_group: false
+    shared_store: false
+    resync_interval: 5s
+    retention_period: 336h
+  filesystem:
+    directory: /loki/chunks
+
+schema_config:
+  configs:
+    - from: 2020-10-24
+      store: boltdb-shipper
+      object_store: filesystem
+      schema: v13
+      index:
+        prefix: index
+        period: 24h
+
+ruler:
+  storage:
+    type: local
+  rule_path: /loki/rules
+  alertmanager_url: http://localhost:9093
+  ring:
+    kvstore:
+      store: inmemory
+  enable_api: true
+
+
+
+
+###form chatgpt-------
+
+version: "3.8"
+
+services:
+  loki:
+    image: grafana/loki:2.9.4
+    container_name: loki
+    restart: unless-stopped
+    ports:
+      - "3100:3100"
+    command: -config.file=/etc/loki/config.yml
+    volumes:
+      - ./loki-config.yml:/etc/loki/config.yml:ro
+      - ./data:/loki
+    networks:
+      - core_net
+
+  grafana:
+    image: grafana/grafana:10.3.1
+    container_name: grafana
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    environment:
+      GF_SECURITY_ADMIN_USER: admin
+      GF_SECURITY_ADMIN_PASSWORD: admin
+      GF_AUTH_ANONYMOUS_ENABLED: "false"
+    volumes:
+      - /srv/docker/appdata/grafana/data:/var/lib/grafana
+    depends_on:
+      - loki
+    networks:
+      - core_net
+
+networks:
+  core_net:
+    external: true
+
+
+services:
+  loki:
+    image: grafana/loki:2.9.4
+    container_name: loki
+    restart: unless-stopped
+    ports:
+      - "3100:3100"
+    command: -config.file=/etc/loki/config.yml
+    volumes:
+      - ./loki-config.yml:/etc/loki/config.yml:ro
+      - ./data:/loki
+    networks:
+      - core_net
+
+  grafana:
+    image: grafana/grafana:10.3.1
+    container_name: grafana
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    environment:
+      GF_SECURITY_ADMIN_USER: admin
+      GF_SECURITY_ADMIN_PASSWORD: admin
+      GF_AUTH_ANONYMOUS_ENABLED: "false"
+    volumes:
+      - /srv/docker/appdata/grafana/data:/var/lib/grafana
+    depends_on:
+      - loki
+    networks:
+      - core_net
+
+networks:
+  core_net:
+
+
+
+
+server:
+  http_listen_port: 9080
+  grpc_listen_port: 0
+
+positions:
+  filename: /data/positions.yaml
+
+clients:
+  - url: http://192.168.8.21:3100/loki/api/v1/push
+
+scrape_configs:
+  # Gitea logs
+  - job_name: gitea
+    static_configs:
+      - targets:
+          - localhost
+        labels:
+          lxc: core-services
+          job: gitea
+          __path__: /srv/docker/appdata/gitea/logs/*.log
+
+  # MinIO logs
+  - job_name: minio
+    static_configs:
+      - targets:
+          - localhost
+        labels:
+          lxc: core-services
+          job: minio
+          __path__: /srv/docker/appdata/minio/logs/*.log
+
+
+
+version: "3.9"
+
+services:
+  promtail:
+    image: grafana/promtail:latest
+    container_name: promtail
+    restart: unless-stopped
+    volumes:
+      # Promtail config
+      - /srv/docker/stacks/promtail/promtail-config.yml:/etc/promtail/config.yml:ro
+
+      # Positions file (to track last read line)
+      - /srv/docker/appdata/promtail/data:/data
+
+      # Gitea logs
+      - /srv/docker/appdata/gitea/logs:/srv/docker/appdata/gitea/logs:ro
+
+      # MinIO logs
+      - /srv/docker/appdata/minio/logs:/srv/docker/appdata/minio/logs:ro
+
+    networks:
+      - core_net
+
+networks:
+  core_net:
+    external: true
+
+
+
+services:
+  uptime-kuma:
+    image: louislam/uptime-kuma:2
+    container_name: uptime-kuma
+    restart: unless-stopped
+    ports:
+
+      - "3001:3001" 
+    volumes:
+
+      - /srv/docker/appdata/uptime-kuma/data:/app/data
+    networks:
+      # Connect to your existing external network
+      - core_net
+
+networks:
+  core_net:
+    external: true
+
+
+
+services:
+  pulse:
+    image: rcourtman/pulse:latest
+    container_name: pulse
+    restart: unless-stopped
+    ports:
+      - "7655:7655"
+    volumes:
+      - /srv/docker/appdata/pulse/data:/data
+    environment:
+      - PULSE_AUTH_USER=admin
+      - PULSE_AUTH_PASS=@Edith2705#
+    networks:
+      - core_net
+
+networks:
+  core_net:
+    external: true
+
+
+version: '3.8'
+
+services:
+  pulse:
+    # Use the latest image tag directly
+    image: rcourtman/pulse:latest
+    container_name: pulse
+    restart: unless-stopped
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "3"
+    ports:
+
+      - "7655:7655"
+    volumes:
+
+      - /srv/docker/appdata/pulse/data:/data
+      # Optional: Mount host timezone info for accuracy
+      - /etc/timezone:/etc/timezone:ro
+      - /etc/localtime:/etc/localtime:ro
+    environment:
+
+      - TZ=Asia/Colombo
+      - PULSE_AUTH_USER=admin
+      - PULSE_AUTH_PASS=@Edith2705#@
+    healthcheck:
+      test: ["CMD", "wget", "--quiet", "--tries=1", "--spider", "http://localhost:7655/api/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 10s
+    networks:
+      - core_net
+
+networks:
+  core_net:
+    external: true
+d130d7d81f45b520ecb25a06419ee322db8268ca919ebf0e
+
+Z05Pqngmvo1gsSao
+
+
+
+
+services:
+  beszel:
+    image: henrygd/beszel:latest
+    container_name: beszel
+    restart: unless-stopped
+    ports:
+
+      - "8090:8090"
+    volumes:
+      - /srv/docker/appdata/beszel/data:/beszel_data
+    networks:
+      - core_net
+
+networks:
+  core_net:
+    external: true
+
+
+
+
+services:
+  beszel-agent:
+    image: henrygd/beszel-agent
+    container_name: beszel-agent
+    restart: unless-stopped
+    network_mode: host
+
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - /srv/docker/appdata/beszel-agent/data:/var/lib/beszel-agent
+    environment:
+      LISTEN: 3000
+      KEY: "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDiqNVBbbNzqR8S5M5E447bVk/g2k0osX1TwD8oHUj5v"
+      TOKEN: 3be0-75c15df992-a6c-45a585e4588
+      HUB_URL: http://192.168.8.22:8090
+
+
+
+services:
+  beszel-agent:
+    image: henrygd/beszel-agent
+    container_name: beszel-agent
+    restart: unless-stopped
+    network_mode: host
+
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - /srv/docker/appdata/beszel-agent/data:/var/lib/beszel-agent
+    environment:
+      LISTEN: 3000
+      KEY: "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDiqNVBbbNzqR8S5M5E447bVk/g2k0osX1TwD8oHUj5v"
+      TOKEN: d0d58-15c26705-190255-b6fd1734
+      HUB_URL: http://192.168.8.22:8090

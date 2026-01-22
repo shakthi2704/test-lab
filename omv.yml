@@ -1,0 +1,66 @@
+services:
+  dozzle:
+    image: amir20/dozzle:latest
+    container_name: dozzle
+    restart: unless-stopped
+    ports:
+      - "9999:8080"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+
+
+services:
+  jellyfin:
+    image: lscr.io/linuxserver/jellyfin:latest
+    container_name: jellyfin
+    environment:
+      - PUID=1000
+      - PGID=100
+      - TZ=Asia/Colombo
+    volumes:
+      - /srv/dev-disk-by-uuid-aaffc8c3-dc41-4091-bb1e-f016fc9f8903/configs/jellyfin/library:/config
+      - /srv/dev-disk-by-uuid-61641c51-0867-47b8-b022-8dc36e6ed804/tv-series:/data/tvshows
+      - /srv/dev-disk-by-uuid-125b205d-8f1f-4860-96a2-645a260744da/movies:/data/movies
+    ports:
+      - 8096:8096
+    restart: unless-stopped
+
+
+---
+# Date: 2025-06-01
+# https://hub.docker.com/r/portainer/portainer-ce
+# https://docs.portainer.io/start/install-ce/server/docker/linux
+services:
+  portainer:
+    image: portainer/portainer-ce:lts
+    container_name: portainer
+    security_opt:
+      - no-new-privileges:true
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - CHANGE_TO_COMPOSE_DATA_PATH/portainer/data:/data
+    ports:
+      - 9000:9000
+      - 8000:8000
+    restart: unless-stopped
+
+
+  services:
+  qbittorrent:
+    image: lscr.io/linuxserver/qbittorrent:latest
+    container_name: qbittorrent
+    environment:
+      - PUID=1001
+      - PGID=100
+      - TZ=Etc/UTC
+      - WEBUI_PORT=8080
+      - TORRENTING_PORT=6881
+    volumes:
+      - /srv/dev-disk-by-uuid-aaffc8c3-dc41-4091-bb1e-f016fc9f8903/configs/qbittorrent/appdata:/config
+      - /srv/dev-disk-by-uuid-61641c51-0867-47b8-b022-8dc36e6ed804/qbittorrent-donwload/:/downloads 
+    ports:
+      - 8080:8080
+      - 6881:6881
+      - 6881:6881/udp
+    restart: unless-stopped
