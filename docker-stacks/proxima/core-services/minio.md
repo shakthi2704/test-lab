@@ -6,15 +6,15 @@ Self-hosted Git service for homelab and projects.
 
 ---
 
-| Item       | Value               |
-| ---------- | ------------------- |
-| Node       | Proxima             |
-| Runtime    | Docker              |
-| Host       | LXC `core-services` |
-| service    | `minio`             |
-| IP Address | `192.168.8.21`      |
-| OS         | Ubuntu Server       |
-| Exposure   | LAN only            |
+| Item       | Value           |
+| ---------- | --------------- |
+| Node       | Proxima         |
+| Runtime    | Docker          |
+| Host       | `core-services` |
+| service    | `minio`         |
+| IP Address | `192.168.8.21`  |
+| OS         | Ubuntu Server   |
+| Exposure   | LAN only        |
 
 ### Deployment — Full Procedure
 
