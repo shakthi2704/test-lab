@@ -35,12 +35,12 @@ chmod -R 750 /srv/docker/appdata/gitea
 sudo chown -R $USER:$USER /srv/docker/stacks/gitea
 chmod -R 755 /srv/docker/stacks/gitea
 
-cd /srv/docker/stacks/gitea
 ```
 
 #### 3 — Create docker-compose.yml
 
 ```
+cd /srv/docker/stacks/gitea
 
 nano docker-compose.yml
 ```
