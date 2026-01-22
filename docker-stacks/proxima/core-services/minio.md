@@ -35,13 +35,16 @@ chmod -R 750 /srv/docker/appdata/minio
 sudo chown -R $USER:$USER /srv/docker/stacks/minio
 chmod -R 755 /srv/docker/stacks/minio
 
-cd /srv/docker/stacks/minio
+
 ```
 
 #### 3 — Create docker-compose.yml
 
 ```
+cd /srv/docker/stacks/minio
+```
 
+```
 nano docker-compose.yml
 ```
 
@@ -82,35 +85,31 @@ docker compose up -d
 ```
 
 ```
+docker compose up -d
+```
+
+```
 docker ps
-docker logs gitea --tail 50
-
 ```
 
-#### Phase 5 — Web Installation (One-Time)
+````
+docker logs minio --tail 50
+```
+````
+
+#### Phase 5 — Validate File Placement
 
 ```
-http://192.168.8.21:3000
+ls /srv/docker/appdata/minio/config
+ls /srv/docker/appdata/minio/logs
+ls /srv/docker/appdata/minio/data
 
 ```
-
-#### Phase 6 — Validate File Placement
-
-```
-ls /srv/docker/appdata/gitea/config
-ls /srv/docker/appdata/gitea/logs
-ls /srv/docker/appdata/gitea/data
-
-```
-
-#### Phase 7 — Operational Checks
-
-```
-docker inspect gitea | grep RestartPolicy
 
 ```
 
 | Item                   | Value                   |
 | ---------------------- | ----------------------- |
 | Administrator Username | Proxima                 |
-| Email Address          | <proxima@proxmox.local> |
+| password          | <password> |
+```

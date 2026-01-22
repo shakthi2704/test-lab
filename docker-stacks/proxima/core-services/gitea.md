@@ -78,6 +78,9 @@ docker compose up -d
 
 ```
 docker ps
+```
+
+````
 docker logs gitea --tail 50
 
 ```
@@ -116,3 +119,4 @@ docker inspect gitea | grep RestartPolicy
 | ---------------------- | ----------------------- |
 | Administrator Username | Proxima                 |
 | Email Address          | <proxima@proxmox.local> |
+````
