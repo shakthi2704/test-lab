@@ -6,15 +6,15 @@ Self-hosted portainer service for homelab and projects.
 
 ---
 
-| Item       | Value                  |
-| ---------- | ---------------------- |
-| Node       | Proxima                |
-| Runtime    | Docker                 |
-| Host       | `core-services`        |
-| service    | `portainer_edge_agent` |
-| IP Address | `192.168.8.21`         |
-| OS         | Ubuntu Server          |
-| Exposure   | LAN only               |
+| Item       | Value             |
+| ---------- | ----------------- |
+| Node       | Proxima           |
+| Runtime    | Docker            |
+| Host       | `core-services`   |
+| service    | `portainer_agent` |
+| IP Address | `192.168.8.21`    |
+| OS         | Ubuntu Server     |
+| Exposure   | LAN only          |
 
 ### Deployment — Full Procedure
 
