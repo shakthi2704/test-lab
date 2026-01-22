@@ -24,7 +24,7 @@ Self-hosted Git service for homelab and projects.
 id dockeruser
 ```
 
-#### 2 — Create Gitea Directories
+#### 2 — Create minio Directories
 
 ```
 mkdir -p /srv/docker/appdata/minio/{data,config,logs}
@@ -52,22 +52,20 @@ nano docker-compose.yml
 services:
   minio:
 
-    image: minio/minio:RELEASE.2024-05-10T01-41-38Z
+    image: minio/minio:latest
     container_name: minio
-    command: server /data --console-address :9001
+    command: server /data --console-address :9002
     restart: unless-stopped
     user: "1000:1000"
 
     environment:
       MINIO_ROOT_USER: proxima
-      MINIO_ROOT_PASSWORD:"@Edith2705#"
+      MINIO_ROOT_PASSWORD: "@Edith2705#"
     volumes:
       - /srv/docker/appdata/minio/data:/data
-      - /srv/docker/appdata/minio/config:/root/.minio
-
     ports:
       - "9000:9000"
-      - "9001:9001"
+      - "9002:9002"
 
     networks:
       - core_net
@@ -75,14 +73,9 @@ services:
 networks:
   core_net:
     external: true
-
 ```
 
-#### Phase 4 — Start Gitea
-
-```
-docker compose up -d
-```
+#### Phase 4 — Start minio
 
 ```
 docker compose up -d

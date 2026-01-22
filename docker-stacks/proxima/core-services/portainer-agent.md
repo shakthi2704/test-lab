@@ -10,7 +10,7 @@ Self-hosted Git service for homelab and projects.
 | ---------- | ---------------------- |
 | Node       | Proxima                |
 | Runtime    | Docker                 |
-| Host       | LXC `core-services`    |
+| Host       | `core-services`        |
 | service    | `portainer_edge_agent` |
 | IP Address | `192.168.8.21`         |
 | OS         | Ubuntu Server          |
@@ -39,4 +39,14 @@ docker run -d \
 
 ```
 docker compose up -d
+```
+
+#### Phase 3 — Start Gitea
+
+```
+docker compose up -d
+```
+
+```
+docker ps
 ```
