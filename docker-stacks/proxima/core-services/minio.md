@@ -111,5 +111,6 @@ ls /srv/docker/appdata/minio/data
 | Item                   | Value                   |
 | ---------------------- | ----------------------- |
 | Administrator Username | Proxima                 |
-| password          | <password> |
+
+
 ```
