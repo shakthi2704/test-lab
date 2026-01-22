@@ -2,7 +2,7 @@
 
 ## Purpose
 
-Self-hosted Git service for homelab and projects.
+Self-hosted portainer service for homelab and projects.
 
 ---
 
@@ -41,12 +41,10 @@ docker run -d \
 docker compose up -d
 ```
 
-#### Phase 3 — Start Gitea
-
-```
-docker compose up -d
-```
-
 ```
 docker ps
+```
+
+```
+docker logs portainer_agent --tail 50
 ```

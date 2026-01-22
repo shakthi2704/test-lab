@@ -2,7 +2,7 @@
 
 ## Purpose
 
-Self-hosted Git service for homelab and projects.
+Self-hosted storage service for homelab and projects.
 
 ---
 
