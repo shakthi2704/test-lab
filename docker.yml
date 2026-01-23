@@ -608,3 +608,33 @@ services:
       KEY: "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDiqNVBbbNzqR8S5M5E447bVk/g2k0osX1TwD8oHUj5v"
       TOKEN: d0d58-15c26705-190255-b6fd1734
       HUB_URL: http://192.168.8.22:8090
+
+
+
+
+
+
+
+
+  services:
+    mailpit:
+        image: axllent/mailpit
+        container_name: mailpit
+        restart: unless-stopped
+        volumes:
+            - /srv/docker/appdata/mailpit/data:/data
+        ports:
+            - 8025:8025
+            - 1025:1025
+        environment:
+            MP_MAX_MESSAGES: 5000
+            MP_DATABASE: /data/mailpit.db
+            MP_SMTP_AUTH_ACCEPT_ANY: 1
+            MP_SMTP_AUTH_ALLOW_INSECURE: 
+
+        networks:
+          - core_net
+
+  networks:
+  core_net:
+    external: true

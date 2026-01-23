@@ -1,0 +1,40 @@
+version: "3.9"
+
+services:
+  wordpress:
+    image: wordpress:latest
+    container_name: wordpress
+    restart: unless-stopped
+    ports:
+      - "8000:80" # WordPress accessible at http://localhost:8000
+    environment:
+      WORDPRESS_DB_HOST: db
+      WORDPRESS_DB_USER: wordpress
+      WORDPRESS_DB_PASSWORD: wordpress_pass
+      WORDPRESS_DB_NAME: wordpress_db
+    volumes:
+      - wp_data:/var/www/html
+    networks:
+      - wp-net
+
+  db:
+    image: mariadb:latest
+    container_name: wp-db
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: root_pass
+      MYSQL_DATABASE: wordpress_db
+      MYSQL_USER: wordpress
+      MYSQL_PASSWORD: wordpress_pass
+    volumes:
+      - db_data:/var/lib/mysql
+    networks:
+      - wp-net
+
+volumes:
+  wp_data:
+  db_data:
+
+networks:
+  wp-net:
+    driver: bridge
