@@ -50,23 +50,27 @@ nano docker-compose.yml
 ```
 services:
   gitea:
-    image: 'gitea/gitea:latest'
+    image: gitea/gitea:latest
     container_name: gitea
     restart: unless-stopped
     ports:
-      - '3000:3000'
-      - '222:22'
+      - "3000:3000"
+      - "222:22"
     environment:
       USER_UID: 1000
       USER_GID: 1000
       TZ: Asia/Colombo
     volumes:
-      - '/srv/docker/appdata/gitea/data:/data'
-      - '/srv/docker/appdata/gitea/config:/etc/gitea'
-      - '/srv/docker/logs/gitea/logs:/var/log/gitea'
+      - /srv/docker/appdata/gitea/data:/data
+      - /srv/docker/appdata/gitea/config:/etc/gitea
+      - /srv/docker/logs/gitea/logs:/var/log/gitea
+    networks:
+      - core_net
+
 networks:
-  proxima-net:
+  core_net:
     external: true
+
 
 ```
 
